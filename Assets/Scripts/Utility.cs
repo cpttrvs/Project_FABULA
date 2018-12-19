@@ -107,5 +107,10 @@ public class Utility {
 		public string definition;
 		// Added later on
 		public string translation;
+
+		public override string ToString()
+		{
+			return "Word: "+name+" Definition: "+definition+" Translation: "+translation;
+		}
 	}
 }

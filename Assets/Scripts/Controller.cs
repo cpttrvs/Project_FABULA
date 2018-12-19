@@ -65,8 +65,9 @@ public class Controller : MonoBehaviour {
 							currentText += char.ToUpper(c);
 
                             //check only when a character is added
-                            CheckWords();
+                            //CheckWords();
                         }
+						CheckWords();
 					} 	
 				}
 			}

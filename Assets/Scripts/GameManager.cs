@@ -196,22 +196,22 @@ public class GameManager : MonoBehaviour {
         switch (type)
         {
             case Enemy.Type.FOX:
-                enemy = Instantiate(foxPrefab, pos, Quaternion.identity);
+                enemy = Instantiate(foxPrefab, new Vector3(pos.x, foxPrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
             case Enemy.Type.WOLF:
-                enemy = Instantiate(wolfPrefab, pos, Quaternion.identity);
+                enemy = Instantiate(wolfPrefab, new Vector3(pos.x, wolfPrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
             case Enemy.Type.DRAGON:
-                enemy = Instantiate(dragonPrefab, pos, Quaternion.identity);
+                enemy = Instantiate(dragonPrefab, new Vector3(pos.x, dragonPrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
             case Enemy.Type.DRONE:
-                enemy = Instantiate(dronePrefab, pos, Quaternion.identity);
+                enemy = Instantiate(dronePrefab, new Vector3(pos.x, dronePrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
             case Enemy.Type.GORILLA:
-                enemy = Instantiate(gorillaPrefab, pos, Quaternion.identity);
+                enemy = Instantiate(gorillaPrefab, new Vector3(pos.x, gorillaPrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
             default:
-                enemy = Instantiate(enemyPrefab, pos, Quaternion.identity);
+                enemy = Instantiate(enemyPrefab, new Vector3(pos.x, enemyPrefab.transform.position.y, pos.z), Quaternion.identity);
                 break;
         }
         Enemy enemyScript = enemy.GetComponentInChildren<Enemy>();

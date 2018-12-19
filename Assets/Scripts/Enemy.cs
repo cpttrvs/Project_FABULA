@@ -172,14 +172,14 @@ public class Enemy : MonoBehaviour {
 				moveSpeed = 3f;
 				attackMode = Mode.RANGE;
 				attackRange = 10f;
-				reloadTime = 3f;
+				reloadTime = 2.5f;
 				realTransform = transform.parent;
 				break;
 			case Enemy.Type.DRONE:
 				moveSpeed = 3f;
 				attackMode = Mode.RANGE;
 				attackRange = 10f;
-				reloadTime = 3f;
+				reloadTime = 2.5f;
 				realTransform = transform;
 				break;
 			case Enemy.Type.GORILLA:
@@ -257,10 +257,12 @@ public class Enemy : MonoBehaviour {
 	}
 	private void OnBecameInvisible() {
 		visibility = false;
-		GameManager.instance.SendMessage("UpdateVisibility", gameObject);
-		// For now they become invisible when the game is over so we destroy them
-		if(gameover)
-			Destroy(gameObject);
+		if(gameObject != null){
+			GameManager.instance.SendMessage("UpdateVisibility", gameObject);
+			// For now they become invisible when the game is over so we destroy them
+			if(gameover)
+				Destroy(gameObject);
+		}
 	}
 
 	private void OnDestroy() {
@@ -291,8 +293,8 @@ public class Enemy : MonoBehaviour {
         string temp = input.Substring(0, length);
         bool startsWith = currentWord.name.ToUpper().StartsWith(temp);
 
-        // if the word contains the input
-        if (startsWith)
+        // if the word contains the input (changed)
+        if (startsWith || !startsWith)
         {
             currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
             hasChanged = true;

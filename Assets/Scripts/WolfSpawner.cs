@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpawnerWolf : MonoBehaviour
+public class WolfSpawner : MonoBehaviour
 {
 
     // Use this for initialization
