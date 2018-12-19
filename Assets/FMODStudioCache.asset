@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d32cf7c32a3ed8347bac48ef5ed56d82, type: 3}
+  m_Name: FMODStudioCache
+  m_EditorClassIdentifier: 
+  EditorBanks:
+  - {fileID: 114532041101213706}
+  - {fileID: 114654122440174962}
+  EditorEvents:
+  - {fileID: 114141822927186478}
+  MasterBanks:
+  - {fileID: 114654122440174962}
+  StringsBanks:
+  - {fileID: 114532041101213706}
+  stringsBankWriteTime: 636802134148495839
+  cacheVersion: 3
+--- !u!114 &114141822927186478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ceb653cd98e289a4e8697a1af55201f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: event:/Sadness
+  guid: 14c3f57d408c714f9065c7222ff9912a
+  Banks:
+  - {fileID: 114654122440174962}
+  IsStream: 1
+  Is3D: 1
+  IsOneShot: 0
+  Parameters: []
+  MinDistance: 1
+  MaxDistance: 20
+  Length: 31200
+--- !u!114 &114532041101213706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vico\Documents\FMOD Studio\Projet\Build\Desktop\Master Bank.strings.bank
+  lastModified: 636802134148495839
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 718
+  Exists: 1
+--- !u!114 &114654122440174962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18180ecb35941f4682ae60107b85b7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Path: C:\Users\Vico\Documents\FMOD Studio\Projet\Build\Desktop\Master Bank.bank
+  lastModified: 636802134148475900
+  LoadResult: 0
+  FileSizes:
+  - Name: Desktop
+    Value: 383584
+  Exists: 1

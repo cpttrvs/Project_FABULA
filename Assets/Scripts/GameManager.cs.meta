@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 90fbe0a6d75a647a5969bf8f9b69af2c
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - camera: {instanceID: 0}
+  - playerGO: {fileID: 1138832279827588, guid: 214c5042cd11e46d7bbe8cf25f2da055, type: 2}
+  - spider: {fileID: 1458647422334188, guid: 9fdad49b040244b16ac08ab48eabe140, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

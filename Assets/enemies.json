@@ -1,0 +1,344 @@
+[
+    {
+        "type" : "SPIDER",
+        "fr" :
+        [
+            {
+                "name" : "araignée",
+                "definition" : "Animal de la classe des arachnides tissant une toile pour pièger ses proies."
+            },
+            {
+                "name" : "toile",
+                "definition" : "Réseau de fils de soie sécrétée par les araignées."
+            },
+            {
+                "name" : "arachnide",
+                "definition" : "Arthropode doté de quatre paires de pattes, formant une classe qui regroupe notamment les araignées et les scorpions."
+            },
+            {
+                "name" : "fil",
+                "definition" : "Le fil est utilisé par l'araignée pour tisser sa toile."
+            },
+            {
+                "name" : "spider-man",
+                "definition" : "Super-héros évoluant dans l'univers Marvel de la maison d'édition Marvel Comics."
+            },
+            {
+                "name" : "phobie",
+                "definition" : "Une phobie est une peur démesurée et irrationnelle d'un objet ou d'une situation précise."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "spider",
+                "definition" : "A spider is a small creature with eight legs. Most types of spider make structures called webs in which they catch insects for food."
+            },
+            {
+                "name" : "web",
+                "definition" : "A web is the thin net made by a spider from a sticky substance which it produces in its body."
+            },
+            {
+                "name" : "arachnid",
+                "definition" : "Any terrestrial chelicerate arthropod of the class Arachnida, characterized by simple eyes and four pairs of legs. The group includes the spiders, scorpions, ticks, mites, and harvestmen."
+            },
+            {
+                "name" : "thread",
+                "definition" : "A spider uses its threads to spin its web."
+            },
+            {
+                "name" : "spider-man",
+                "definition" : "Spider-Man is a fictional superhero created by writer-editor Stan Lee."
+            },
+            {
+                "name" : "phobia",
+                "definition" : "A phobia is a type of anxiety disorder, defined by a persistent and excessive fear of an object or situation."
+            }
+        ]
+    },
+    {
+        "type" : "WOLF",
+        "fr" :
+        [
+            {
+                "name" : "loup",
+                "definition" : "Mammifère sauvage appartenant à la famille des canidés. Il ressemble à un grand chien."
+            },
+            {
+                "name" : "griffe",
+                "definition" : "Ongles crochus, pointus, acérés de certains animaux."
+            },
+            {
+                "name" : "hurlement",
+                "definition" : "Cri aigu et prolongé."
+            },
+            {
+                "name" : "fourrure",
+                "definition" : "Peau d'animal avec son poil travaillé de façon à servir de vêtement."
+            },
+            {
+                "name" : "loup-garou",
+                "definition" : "Personnage légendaire qui se transforme en loup les nuits de pleine lune."
+            },
+            {
+                "name" : "meute",
+                "definition" : "Ensemble de loups qui vivent en communauté."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "wolf",
+                "definition" : "A wolf is a wild animal that looks like a large dog."
+            },
+            {
+                "name" : "claw",
+                "definition" : "The claws of a bird or animal are the thin, hard, curved nails at the end of its feet."
+            },
+            {
+                "name" : "howl",
+                "definition" : "If an animal such as a wolf or a dog howls, it makes a long, loud, crying sound."
+            },
+            {
+                "name" : "fur",
+                "definition" : "Fur is the thick and usually soft hair that grows on the bodies of many mammals."
+            },
+            {
+                "name" : "werewolf",
+                "definition" : "A person changed into a wolf, or one capable of assuming the form of a wolf at will."
+            },
+            {
+                "name" : "pack",
+                "definition" : "A group of wolves that live and hunt together."
+            }
+        ]
+    },
+    {
+        "type" : "FOX",
+        "fr" :
+        [
+            {
+                "name" : "renard",
+                "definition" : "Mammifère carnivore au museau pointu et au pelage roux."
+            },
+            {
+                "name" : "carnivore",
+                "definition" : "Qui se nourrit de viande."
+            },
+            {
+                "name" : "roux",
+                "definition" : "De couleur rousse, entre le jaune et le rouge."
+            },
+            {
+                "name" : "rusé",
+                "definition" : "Astucieux, malicieux."
+            },
+            {
+                "name" : "renardeau",
+                "definition" : "Le renardeau est le petit du renard et de la renarde."
+            },
+            {
+                "name" : "tanière",
+                "definition" : "Antre, abri d'un animal sauvage."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "fox",
+                "definition" : "A fox is a wild animal which looks like a dog and has reddish-brown fur, a pointed face and ears, and a thick tail."
+            },
+            {
+                "name" : "carnivore",
+                "definition" : "A carnivore is an animal that eats meat."
+            },
+            {
+                "name" : "red",
+                "definition" : "Foxy red is the colour of foxes, between yellow and red."
+            },
+            {
+                "name" : "crafty",
+                "definition" : "If you describe someone as crafty, you mean that they achieve what they want in a clever way, often by deceiving people."
+            },
+            {
+                "name" : "cub",
+                "definition" : "A cub is a young wild animal."
+            },
+            {
+                "name" : "lair",
+                "definition" : "A lair is a place where a wild animal lives, usually a place which is underground or well-hidden."
+            }
+        ]
+    },
+    {
+        "type" : "DRAGON",
+        "fr" :
+        [
+            {
+                "name" : "dragon",
+                "definition" : "Animal fabuleux représenté avec des griffes, des ailes, une queue de serpent et crachant le feu."
+            },
+            {
+                "name" : "queue",
+                "definition" : "Extrémité du corps de certains animaux."
+            },
+            {
+                "name" : "feu",
+                "definition" : "Combustion d'un corps dégageant des flammes, de la chaleur et de la lumière."
+            },
+            {
+                "name" : "cracher",
+                "definition" : "Éclabousser, projeter une substance."
+            },
+            {
+                "name" : "écaille",
+                "definition" : "Plaque qui recouvre le corps de certains animaux (poissons, reptiles...)."
+            },
+            {
+                "name" : "monstre",
+                "definition" : "Être fantastique de la mythologie populaire."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "dragon",
+                "definition" : "In stories and legends, a dragon is an animal like a big lizard. It has wings and claws, and breathes out fire."
+            },
+            {
+                "name" : "tail",
+                "definition" : "The tail of an animal, bird, or fish is the part extending beyond the end of its body."
+            },
+            {
+                "name" : "fire",
+                "definition" : "Fire is the hot, bright flames produced by things that are burning."
+            },
+            {
+                "name" : "spit",
+                "definition" : "If someone spits, they force an amount of liquid out of their mouth, often to show hatred or contempt."
+            },
+            {
+                "name" : "scale",
+                "definition" : "The scales of a fish or reptile are the small, flat pieces of hard skin that cover its body."
+            },
+            {
+                "name" : "monster",
+                "definition" : "A monster is a large imaginary creature that looks very ugly and frightening."
+            }
+        ]
+    },
+    {
+        "type" : "DRONE",
+        "fr" :
+        [
+            {
+                "name" : "drone",
+                "definition" : "Petit avion sans pilote, télécommandé ou programmé, utilisé pour l'observation."
+            },
+            {
+                "name" : "pilote",
+                "definition" : "Personne qui est chargée de conduire un avion, une voiture, un bateau..."
+            },
+            {
+                "name" : "moteur",
+                "definition" : "Appareil qui permet de transformer une énergie en énergie mécanique."
+            },
+            {
+                "name" : "missile",
+                "definition" : "Engin explosif aérospatial qui se propulse de manière autonome et peut être dirigé par téléguidage ou autoguidage."
+            },
+            {
+                "name" : "surveillance",
+                "definition" : "Action de surveiller, d’observer, de contrôler avec attention, d’examiner quelque chose ou quelqu’un."
+            },
+            {
+                "name" : "vol",
+                "definition" : "Voyage aérien d'un avion ou d'un engin."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "drone",
+                "definition" : "A drone is a type of aircraft that does not have a pilot and is controlled by someone on the ground."
+            },
+            {
+                "name" : "pilot",
+                "definition" : "A pilot is a person who is trained to fly an aircraft."
+            },
+            {
+                "name" : "engine",
+                "definition" : "The engine of a car or other vehicle is the part that produces the power which makes the vehicle move."
+            },
+            {
+                "name" : "missile",
+                "definition" : "A missile is a tube-shaped weapon that travels long distances through the air and explodes when it reaches its target."
+            },
+            {
+                "name" : "surveillance",
+                "definition" : "Surveillance is the careful watching of someone, especially by an organization such as the police or the army."
+            },
+            {
+                "name" : "fly",
+                "definition" : "If you fly somewhere, you travel there in an aircraft."
+            }
+        ]
+    },
+    {
+        "type" : "GORILLA",
+        "fr" :
+        [
+            {
+                "name" : "gorille",
+                "definition" : "Gorille désigne un grand singe anthropoïde vivant dans les forêts de l'Afrique équatoriale, qui est frugivore et assez farouche."
+            },
+            {
+                "name" : "poilu",
+                "definition" : "Couvert de poils."
+            },
+            {
+                "name" : "banane",
+                "definition" : "Fruit comestible oblong et jaune du bananier."
+            },
+            {
+                "name" : "fort",
+                "definition" : "Puissant physiquement."
+            },
+            {
+                "name" : "primate",
+                "definition" : "Mammifère tel que le singe et l'homme."
+            },
+            {
+                "name" : "singe",
+                "definition" : "Primate anthropoïde à face nue et aux membres préhensibles."
+            }
+        ],
+        "en" :
+        [
+            {
+                "name" : "gorilla",
+                "definition" : "A gorilla is a very large ape. It has long arms, black fur, and a black face."
+            },
+            {
+                "name" : "hairy",
+                "definition" : "Someone or something that is hairy is covered with hairs."
+            },
+            {
+                "name" : "banana",
+                "definition" : "Bananas are long curved fruit with yellow skins."
+            },
+            {
+                "name" : "strong",
+                "definition" : "Someone who is strong is healthy with good muscles and can move or carry heavy things, or do hard physical work."
+            },
+            {
+                "name" : "primate",
+                "definition" : "A primate is a member of the group of mammals which includes humans, monkeys, and apes."
+            },
+            {
+                "name" : "ape",
+                "definition" : "Apes are chimpanzees, gorillas, and other animals in the same family."
+            }
+        ]
+    }
+]

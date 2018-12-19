@@ -1,0 +1,337 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+using System.Linq;
+
+[RequireComponent(typeof(Collider))]
+public class Enemy : MonoBehaviour {
+
+	public enum Type { SPIDER, WOLF, FOX, DRAGON, DRONE, GORILLA };
+	public enum Mode { RANGE, MELEE };
+
+	// Only used by enemies attacking from afar
+	[SerializeField] GameObject projectilePrefab;
+
+	// Words
+	[SerializeField] Stack<Utility.Word> words = new Stack<Utility.Word>();
+	Utility.Word currentWord;
+    // to check if the currentWord has changed between this frame and the last checkWords (used for error stat)
+    public bool hasChanged = false;
+    string lastFrameWord = "";
+
+	// Behaviour
+	GameObject target;
+	Type type;
+	Mode attackMode;
+	// Probably have to change that!
+	Transform realTransform;
+	float moveSpeed = 1f;
+	int maxLife = 0;
+	int currentLife = 0;
+	int damage = 1;
+	bool visibility = false;
+	float reloadTimer = 0f;
+	float reloadTime = 2f;
+	float attackRange = 0f;
+	float attackSpeed = 2.5f;
+	// Only used by enemies attacking in melee
+	bool hit = false;
+	bool gameover = false;
+	float gameoverTimer = 0f;
+
+	// UI
+	Text currentWordUI;
+
+	// Position in 2D (y being leveled)
+	Vector3 targetPositionIn2D;
+
+	void Awake() {
+		GameManager.instance.SendMessage("AddEnemy", gameObject);
+	}
+	void Start () {
+		maxLife = words.Count;
+		currentLife = maxLife;
+		target = GameObject.FindGameObjectWithTag("Player");
+		ComputePositionsIn2D();
+		// Rotate towards the target
+		realTransform.LookAt(targetPositionIn2D);
+		// When the enemy first comes into attack range it can attack right away
+		reloadTimer = reloadTime;
+
+		currentWordUI = gameObject.GetComponentInChildren<Text>();
+		if(currentWordUI == null) {
+			Debug.Log("Enemy (" + gameObject.name + "): no current word text");
+		} else {
+			UpdateCurrentWord();
+			UpdateUI();
+		}
+	}
+
+	bool attacking = false;
+	
+	void Update () {
+		if(target != null){
+			if(!gameover){
+				ComputePositionsIn2D();
+				// We constantly look at the target
+				realTransform.LookAt(targetPositionIn2D);
+				reloadTimer += Time.deltaTime;
+			}
+			if(!IsInAttackRange()){
+				hit = false;
+				Move();
+			}
+			// FOX, WOLF
+			else if(IsInAttackRange() && attackMode == Mode.MELEE && !type.Equals(Type.GORILLA)){
+				// Before hit
+				if(IsInAttackRange() && reloadTimer > reloadTime && !hit && !gameover){
+					realTransform.Translate(0, 0, Time.deltaTime * attackSpeed);
+				}
+				// After hit
+				else if(IsInAttackRange() && hit){
+					realTransform.Translate(0, 0, -Time.deltaTime * attackSpeed);
+				}
+			}
+			// GORILLA
+			else if(IsInAttackRange() && attackMode == Mode.MELEE && type.Equals(Type.GORILLA) && reloadTimer > reloadTime){
+				// We stop moving
+				GetComponent<Animator>().SetFloat("VSpeed", 0);
+				// If the gorilla isn't yet attacking we do so
+				if(!attacking && !gameover){
+					GetComponent<Animator>().SetInteger("CurrentAction", 4);
+					// The target takes damage
+					target.SendMessage("TakeDamage", damage);
+					attacking = true;
+				}
+				// Else we reset the animator's variable for the next attack
+				else{
+					GetComponent<Animator>().SetInteger("CurrentAction", 0);
+					attacking = false;
+					reloadTimer = 0;
+				}
+			}
+			// DRAGON, DRONE
+			else if(IsInAttackRange() && attackMode == Mode.RANGE){
+				if(reloadTimer > reloadTime && !gameover){
+					Vector3 position = realTransform.position;
+					position = position + realTransform.forward * 1.4f;
+					GameObject projectile = Instantiate(projectilePrefab, position, Quaternion.identity);
+					// Impossible to hide it in the dragon's hierarchy because the dragon's movement will affect the projectile
+					//projectile.transform.parent = transform;
+					projectile.hideFlags = HideFlags.HideInHierarchy;
+					reloadTimer = 0f;
+				}
+			}
+			if(gameover){
+				gameoverTimer += Time.deltaTime;
+				if(gameoverTimer > 1f){
+					Move();
+				}
+			}
+		}
+		else{
+			Debug.Log(name+" has no target!");
+		}
+		UpdateUI();
+	}
+
+	private void Move(){
+		if(type.Equals(Type.GORILLA)){
+			// Advance
+			GetComponent<Animator>().SetFloat("VSpeed", 1);
+			// We can use this to turn around the player, if needed
+			//GetComponent<Animator>().SetFloat("HSpeed", 1);
+		}
+		else{
+			realTransform.Translate(0, 0, Time.deltaTime * moveSpeed);
+		}
+	}
+
+	/*
+		Sets up the vocabulary and all the other parameters depending on the enemy's type
+	*/
+	public void Initiate(Enemy.Type type){
+		this.type = type;	
+		switch(type){
+			case Enemy.Type.FOX:
+				moveSpeed = 2.5f;
+				attackMode = Mode.MELEE;
+				attackRange = 2f;
+				reloadTime = 2f;
+				realTransform = transform;
+				break;
+			case Enemy.Type.WOLF:
+				moveSpeed = 2.5f;
+				attackMode = Mode.MELEE;
+				attackRange = 3f;
+				reloadTime = 2f;
+				realTransform = transform;
+				break;
+			case Enemy.Type.DRAGON:
+				moveSpeed = 3f;
+				attackMode = Mode.RANGE;
+				attackRange = 10f;
+				reloadTime = 3f;
+				realTransform = transform.parent;
+				break;
+			case Enemy.Type.DRONE:
+				moveSpeed = 3f;
+				attackMode = Mode.RANGE;
+				attackRange = 10f;
+				reloadTime = 3f;
+				realTransform = transform;
+				break;
+			case Enemy.Type.GORILLA:
+				moveSpeed = 1.5f;
+				attackMode = Mode.MELEE;
+				attackRange = 1.5f;
+				reloadTime = 3f;
+				realTransform = transform;
+				break;
+			default:
+				moveSpeed = 2f;
+				attackMode = Mode.MELEE;
+				realTransform = transform;
+				attackRange = 1f;
+				break;
+		}
+		List<Utility.Word> vocabulary = new List<Utility.Word>(Utility.GetVocabulary(type, Glossary.language));
+		// Move this elsewhere, specific for each enemy...
+		int amount = 3;
+		for(int i=0; i<amount; i++){
+			// Select a random index
+			int index = Random.Range(0, vocabulary.Count);
+			// Add the word at that index to the enemy's vocabulary
+			AddWord(vocabulary.ElementAt(index));
+			// Remove the word from the list so it won't be used again
+			vocabulary.RemoveAt(index);
+		}
+	}
+
+	private void OnTriggerEnter(Collider other) {
+		if(!gameover && other.gameObject.tag.Equals("Player")){
+			// We hit the target
+			hit = true;
+			// The target takes damage
+			target.SendMessage("TakeDamage", damage);
+			// We "reload"
+			reloadTimer = 0f;
+		}
+	}
+
+	private void GameOver(){
+		gameover = true;
+	}
+
+	private void ComputePositionsIn2D(){
+		// We level y so that we never look down or up but always straight!
+		targetPositionIn2D = new Vector3(target.transform.position.x, realTransform.position.y, target.transform.position.z);
+	}
+	
+	private bool IsInAttackRange(){
+		return Vector3.Distance(targetPositionIn2D, realTransform.position) < attackRange;
+	}
+
+	private void UpdateUI(){
+		currentWordUI.transform.position = Camera.main.WorldToScreenPoint(new Vector3(realTransform.position.x, 0, realTransform.position.z+realTransform.localScale.z/2+0.5f));
+	}
+	
+	public void Hit() { 
+		if(currentLife - 1 <= 0) {
+			currentLife = 0;
+			//death
+			//GameManager.instance.SendMessage("RemoveEnemy", gameObject);
+			Destroy(gameObject); 
+		} else {
+			currentLife -= 1;
+			words.Pop(); 
+			UpdateCurrentWord();
+		}
+		Debug.Log(gameObject.name + " " + getCurrentLife());
+	}
+
+	private void OnBecameVisible() {
+		visibility = true;
+		GameManager.instance.SendMessage("UpdateVisibility", gameObject);
+	}
+	private void OnBecameInvisible() {
+		visibility = false;
+		GameManager.instance.SendMessage("UpdateVisibility", gameObject);
+		// For now they become invisible when the game is over so we destroy them
+		if(gameover)
+			Destroy(gameObject);
+	}
+
+	private void OnDestroy() {
+		GameManager.instance.SendMessage("RemoveEnemy", gameObject);
+	}
+
+	// Target
+	public void SetTarget(GameObject t) {
+		target = t;
+	}
+	public GameObject GetTarget() { return target; }
+
+	// Words
+	public Utility.Word VerifyWord(string input) {
+		input = input.ToUpper();
+        if (currentWord.name.ToUpper() == input) {
+			Debug.Log(gameObject.name + ": " + input);
+			target.SendMessage("Hit", realTransform.position);
+			Utility.Word tmp = currentWord;
+			Hit();
+			return tmp;
+		}
+
+
+        int length = input.Length;
+        if (input.Length > currentWord.name.Length)
+            length = currentWord.name.Length;
+        string temp = input.Substring(0, length);
+        bool startsWith = currentWord.name.ToUpper().StartsWith(temp);
+
+        // if the word contains the input
+        if (startsWith)
+        {
+            currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
+            hasChanged = true;
+        } else {
+            temp = temp.Substring(0, length - 1);
+            startsWith = currentWord.name.ToUpper().StartsWith(temp);
+            if(startsWith && length - 1 > 0)
+            {
+                hasChanged = false;
+                Debug.Log(gameObject.name + ": " + currentWord.name + " has not changed");
+                GameManager.instance.nbErrors++;
+            }
+        }
+        
+        return null;
+	}
+	
+	public void UpdateCurrentWord() {
+		if(words != null) {
+			currentWord = words.Peek();
+			currentWordUI.text = currentWord.name.ToUpper();
+		}
+	}
+
+	public void AddWord(Utility.Word word) {
+		word.translation = Utility.GetWordTranslation(type, word);
+		if(!words.Contains(word)) {
+			words.Push(word);
+			maxLife += 1;
+			currentLife += 1;
+		}
+	}
+
+	public Type GetCreatureType(){
+		return type;
+	}
+
+	//Getters
+	public int getCurrentLife() { return currentLife; }
+	public int getDamage() { return damage; }
+	public bool isVisible() { return visibility; }
+}

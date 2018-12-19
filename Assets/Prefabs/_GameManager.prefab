@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &100100000
+Prefab:
+  m_ObjectHideFlags: 1
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications: []
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 0}
+  m_RootGameObject: {fileID: 1077433516206274}
+  m_IsPrefabAsset: 1
+--- !u!1 &1077433516206274
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4225870309263690}
+  - component: {fileID: 114680112629497074}
+  m_Layer: 0
+  m_Name: _GameManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4225870309263690
+Transform:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077433516206274}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114680112629497074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1077433516206274}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90fbe0a6d75a647a5969bf8f9b69af2c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  fadeQuad: {fileID: 0}
+  playerGO: {fileID: 0}
+  enemyPrefab: {fileID: 1458647422334188, guid: 9fdad49b040244b16ac08ab48eabe140,
+    type: 2}
+  foxPrefab: {fileID: 1336033964131860, guid: 4f43e5213629a104dbaf8bac94a1a3dd, type: 2}
+  wolfPrefab: {fileID: 1538583068198500, guid: 1b63db32ce4114a458c40c2c9d8dcaf8, type: 2}
+  dragonPrefab: {fileID: 1471415301017148, guid: 72e8cc3fa0bd16b40b3b6f1baa010274,
+    type: 2}
+  dronePrefab: {fileID: 1253629081138556, guid: b0377f283f7a342a29ec287ea3b737db,
+    type: 2}
+  gorillaPrefab: {fileID: 1552982741918538, guid: d96722dd030bd4135b11a8c0adc78623,
+    type: 2}
+  nbErrors: 0
+  nbCorrectWords: 0
