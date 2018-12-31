@@ -288,19 +288,16 @@ public class Enemy : MonoBehaviour {
 
 
         int length = input.Length;
-        if (input.Length > currentWord.name.Length)
+        if (length > currentWord.name.Length)
             length = currentWord.name.Length;
         string temp = input.Substring(0, length);
-        bool startsWith = currentWord.name.ToUpper().StartsWith(temp);
+        hasChanged = currentWord.name.ToUpper().StartsWith(temp);
 
-        // if the word contains the input (changed)
-        if (startsWith || !startsWith)
-        {
-            currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
-            hasChanged = true;
-        } else {
+        currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
+        // if the word contains the input
+        if (!hasChanged){
             temp = temp.Substring(0, length - 1);
-            startsWith = currentWord.name.ToUpper().StartsWith(temp);
+            bool startsWith = currentWord.name.ToUpper().StartsWith(temp);
             if(startsWith && length - 1 > 0)
             {
                 hasChanged = false;

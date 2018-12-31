@@ -20,11 +20,10 @@ public class TriggerEnd : MonoBehaviour
     {
         GameManager manager = GameObject.Find("_GameManager").GetComponent<GameManager>();
         if (other.gameObject.tag == "Player" && manager.GetEnemies().Count == 0)
-        {
-            Debug.Log("End game");
-            
+        {            
             manager.gameover = true;
             manager.finished = true;
+            Time.timeScale = 0f;
         }
     }
 }

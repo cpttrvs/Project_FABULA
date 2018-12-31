@@ -177,9 +177,9 @@ public class Glossary {
             switch (language)
             {
                 case Language.FR:
-                return "Z, Q, S, D";
+                return "Z, Q, S, D\npour bouger";
                 case Language.EN:
-                return "Z, Q, S, D";
+                return "Z, Q, S, D\nto move";
                 default:
                 return "";
             }
@@ -195,7 +195,7 @@ public class Glossary {
                 case Language.FR:
                 return "ENTRÉE    pour écrire";
                 case Language.EN:
-                return "ENTER        to write";
+                return "ENTER          to write";
                 default:
                 return "";
             }

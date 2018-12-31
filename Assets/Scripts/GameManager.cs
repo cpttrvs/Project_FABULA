@@ -50,7 +50,7 @@ public class GameManager : MonoBehaviour {
 
 	void Start () {
 		StartCoroutine(FadeIn());
-
+		Time.timeScale = 1f;
 		camera = Camera.main;
 		instance = this;
 		Utility.InitializeVocabularyList();
@@ -135,7 +135,8 @@ public class GameManager : MonoBehaviour {
 		statsNbCorrectWords.text = Glossary.STRING_NBCORRECTWORDS + nbCorrectWords;
 		statsNbErrors.text = Glossary.STRING_NBERRORS + nbErrors;
         
-        if(!gameover) timer += Time.deltaTime;
+        //if(!gameover) 
+			timer += Time.deltaTime;
         timerUI.text = timer.ToString("0.0");
         wpm = nbCorrectWords / (timer / 60f);
 	}

@@ -151,7 +151,7 @@ public class UIManager : MonoBehaviour {
 
     public void Restart()
     {
-        SceneManager.LoadScene("IntroScene");
+        SceneManager.LoadScene("IceLevel");
     }
 
 	// Hides/Shows the scrollbar depending on the size of the content
