@@ -193,9 +193,9 @@ public class Glossary {
             switch (language)
             {
                 case Language.FR:
-                return "ENTRÉE    pour écrire";
+                return "ENTRÉE            pour écrire";
                 case Language.EN:
-                return "ENTER          to write";
+                return "ENTER                 to write";
                 default:
                 return "";
             }
