@@ -240,13 +240,15 @@ public class Enemy : MonoBehaviour {
 	public void Hit() { 
 		if(currentLife - 1 <= 0) {
 			currentLife = 0;
-			//death
-			//GameManager.instance.SendMessage("RemoveEnemy", gameObject);
-			Destroy(gameObject); 
+            // If the script isn't attached to the highest element of the gameobject
+            if (gameObject.transform.parent != null)
+                Destroy(gameObject.transform.parent.gameObject);
+            else
+			    Destroy(gameObject); 
 		} else {
 			currentLife -= 1;
-			words.Pop(); 
-			UpdateCurrentWord();
+			//words.Pop(); 
+			//UpdateCurrentWord();
 		}
 		Debug.Log(gameObject.name + " " + getCurrentLife());
 	}
@@ -278,12 +280,18 @@ public class Enemy : MonoBehaviour {
 	// Words
 	public Utility.Word VerifyWord(string input) {
 		input = input.ToUpper();
+        currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
         if (currentWord.name.ToUpper() == input) {
 			Debug.Log(gameObject.name + ": " + input);
-			target.SendMessage("Hit", realTransform.position);
+			target.SendMessage("Hit", realTransform);
 			Utility.Word tmp = currentWord;
-			Hit();
-			return tmp;
+			//Hit();
+            // Update the word straight away
+            if(getCurrentLife() > 1) {        
+                words.Pop(); 
+                UpdateCurrentWord();
+            }
+            return tmp;
 		}
 
 
@@ -293,7 +301,6 @@ public class Enemy : MonoBehaviour {
         string temp = input.Substring(0, length);
         hasChanged = currentWord.name.ToUpper().StartsWith(temp);
 
-        currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
         // if the word contains the input
         if (!hasChanged){
             temp = temp.Substring(0, length - 1);

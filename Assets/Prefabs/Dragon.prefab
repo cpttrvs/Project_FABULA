@@ -143,6 +143,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4335865474250078}
   - component: {fileID: 95784908879778554}
+  - component: {fileID: 64775843982222778}
   m_Layer: 0
   m_Name: Dragon
   m_TagString: Enemy
@@ -606,6 +607,20 @@ Transform:
   m_Father: {fileID: 4407098700131444}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!64 &64775843982222778
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1471415301017148}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: bcf471273cc460644bee464d85b13464, type: 3}
 --- !u!65 &65291162413079222
 BoxCollider:
   m_ObjectHideFlags: 1

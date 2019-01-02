@@ -1440,6 +1440,7 @@ GameObject:
   - component: {fileID: 143011484206531418}
   - component: {fileID: 23732028997020300}
   - component: {fileID: 114172101024540030}
+  - component: {fileID: 64816269059064952}
   m_Layer: 0
   m_Name: Gorilla
   m_TagString: Enemy
@@ -3582,7 +3583,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1552982741918538}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.7, y: -0.1, z: 5.427}
+  m_LocalPosition: {x: 4.05, y: 3.37, z: 4.7}
   m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 4685960806165982}
@@ -5283,6 +5284,20 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!64 &64816269059064952
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1552982741918538}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300008, guid: e1fdb3068ea408b4b930117dcaae2fb6, type: 3}
 --- !u!95 &95265847785587880
 Animator:
   serializedVersion: 3
@@ -5367,6 +5382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   projectilePrefab: {fileID: 0}
+  hasChanged: 0
 --- !u!114 &114323726950950732
 MonoBehaviour:
   m_ObjectHideFlags: 1

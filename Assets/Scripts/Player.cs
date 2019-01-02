@@ -7,17 +7,30 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     
 	[SerializeField] int maxLife = 3;
+	[SerializeField] GameObject weapon;
+    // TEST
+    [SerializeField] GameObject enemy;
 	int currentLife;
 	float speed = 6f;
 	Animator animator;
 	bool dead;
+
+    GameObject blade;
 
 	// Use this for initialization
 	void Start () {
 		currentLife = maxLife;
 		dead = false;
 		animator = GetComponent<Animator>();
-	}
+
+        // TEST
+        if(enemy != null) {
+            GameObject blade = GameObject.Instantiate(weapon, new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
+            blade.GetComponent<Blade>().enemy = enemy;
+        }
+
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -70,11 +83,14 @@ public class Player : MonoBehaviour {
 	}
 
 	// Called when an enemy got hit
-	public void Hit(Vector3 position){
-		Vector3 direction = Vector3.Normalize(position - transform.position);
+	public void Hit(Transform trans){
+		Vector3 direction = Vector3.Normalize(trans.position - transform.position);
 		// We freeze y since we never want to rotate upwards
 		direction.y = 0;
 		transform.rotation = Quaternion.LookRotation(direction);
-		animator.SetTrigger("attack");
-	}
+        Debug.Log("Throwing blade");
+        GameObject blade = GameObject.Instantiate(weapon, transform.position + new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
+        blade.GetComponent<Blade>().enemy = trans.gameObject;
+        animator.SetTrigger("attack");
+    }
 }

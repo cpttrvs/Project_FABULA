@@ -4968,6 +4968,12 @@ Prefab:
       propertyPath: maxLife
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114860799584743310, guid: 0a39f436066f764429a54abb84a6dd00,
+        type: 2}
+      propertyPath: weapon
+      value: 
+      objectReference: {fileID: 1952835274797954, guid: 0c9427570e67d7b43ac4f4d981d773b3,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0a39f436066f764429a54abb84a6dd00, type: 2}
   m_IsPrefabAsset: 0

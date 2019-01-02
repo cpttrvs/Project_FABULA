@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.F1)){
+		if(Input.GetKeyDown(KeyCode.Delete)){
 			InstantiateEnemy(Enemy.Type.GORILLA);
 		}
 		else if(Input.GetKeyDown(KeyCode.F2)){
