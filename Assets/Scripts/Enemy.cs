@@ -199,6 +199,7 @@ public class Enemy : MonoBehaviour {
 		List<Utility.Word> vocabulary = new List<Utility.Word>(Utility.GetVocabulary(type, Glossary.language));
 		// Move this elsewhere, specific for each enemy...
 		int amount = 3;
+		Debug.Log(vocabulary.Count);
 		for(int i=0; i<amount; i++){
 			// Select a random index
 			int index = Random.Range(0, vocabulary.Count);

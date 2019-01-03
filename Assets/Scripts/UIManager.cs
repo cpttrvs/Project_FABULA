@@ -212,11 +212,21 @@ public class UIManager : MonoBehaviour {
 	// Populates the info panel with the word, its definition...
 	private void PopulateInfoPanel(GameObject panel, Utility.Word wordInfo){
 		Text[] texts = panel.GetComponentsInChildren<Text>();
-		Text wordUI = texts[0];
-		Text translationUI = texts[1];
-		Text definitionUI = texts[2];
-		wordUI.text = Utility.ToUpperOnFirstLetter(wordInfo.name);
-		translationUI.text = Utility.ToUpperOnFirstLetter(wordInfo.translation);
-		definitionUI.text = wordInfo.definition;
-	}
+		Text wordTxt = texts[0];
+		Text translationTxt = texts[1];
+		Text defintionTxt = texts[2];
+		wordTxt.text = Utility.ToUpperOnFirstLetter(wordInfo.name);
+		translationTxt.text = Utility.ToUpperOnFirstLetter(wordInfo.translation);
+		defintionTxt.text = wordInfo.definition;
+
+        Button[] buttons = panel.GetComponentsInChildren<Button>();
+        Button wordBtn = buttons[0];
+        Button translationBtn = buttons[1];
+        wordBtn.onClick.AddListener(() => SpeakWord(wordInfo.name));
+        translationBtn.onClick.AddListener(() => SpeakWord(wordInfo.translation));
+    }
+
+    public void SpeakWord(string word) {
+        Camera.main.SendMessage("PlayWordAudioClip", word);
+    }
 }

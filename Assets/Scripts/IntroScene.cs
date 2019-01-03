@@ -70,8 +70,7 @@ public class IntroScene : MonoBehaviour {
 			yield return new WaitForSeconds(0.4f);
 			// If we aren't changing scenes
 			if(!zoomIn){
-				audioSource.clip = audioClips[Random.Range(0, audioClips.Count)];
-				audioSource.Play();
+        		audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Count)]);
 			}
 			// IMO this way there's a better visual
 			yield return new WaitForSeconds(0.1f);
