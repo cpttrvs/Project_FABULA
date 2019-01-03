@@ -286,6 +286,7 @@ public class Enemy : MonoBehaviour {
 			Debug.Log(gameObject.name + ": " + input);
 			target.SendMessage("Hit", realTransform);
 			Utility.Word tmp = currentWord;
+			Camera.main.SendMessage("PlayWordAudioClip", currentWord.name+"_"+currentWord.language.ToString().ToLower());
 			//Hit();
             // Update the word straight away
             if(getCurrentLife() > 1) {        
