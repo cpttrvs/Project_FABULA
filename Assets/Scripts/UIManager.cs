@@ -219,11 +219,18 @@ public class UIManager : MonoBehaviour {
 		translationTxt.text = Utility.ToUpperOnFirstLetter(wordInfo.translation);
 		defintionTxt.text = wordInfo.definition;
 
+		string wordLanguage = wordInfo.language.ToString().ToLower();
+		string translationLanguage = "";
+		if(wordLanguage.Equals("fr"))
+			translationLanguage = "en";
+		else if(wordLanguage.Equals("en"))
+			translationLanguage = "fr";
+
         Button[] buttons = panel.GetComponentsInChildren<Button>();
         Button wordBtn = buttons[0];
         Button translationBtn = buttons[1];
-        wordBtn.onClick.AddListener(() => SpeakWord(wordInfo.name));
-        translationBtn.onClick.AddListener(() => SpeakWord(wordInfo.translation));
+        wordBtn.onClick.AddListener(() => SpeakWord(wordInfo.name+"_"+wordLanguage));
+        translationBtn.onClick.AddListener(() => SpeakWord(wordInfo.translation+"_"+translationLanguage));
     }
 
     public void SpeakWord(string word) {

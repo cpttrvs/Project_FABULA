@@ -325,6 +325,7 @@ public class Enemy : MonoBehaviour {
 	}
 
 	public void AddWord(Utility.Word word) {
+		word.language = Glossary.language;
 		word.translation = Utility.GetWordTranslation(type, word);
 		if(!words.Contains(word)) {
 			words.Push(word);

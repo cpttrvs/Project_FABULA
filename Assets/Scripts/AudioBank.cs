@@ -17,9 +17,9 @@ public class AudioBank : MonoBehaviour {
 		
 	}
 
-    private void PlayWordAudioClip(string word) {
-        Debug.Log("Playing audio clip for " + word);
-        audioSource.PlayOneShot(GetAudioClipByName(word + "_" + Glossary.language.ToString().ToLower()));
+    private void PlayWordAudioClip(string filename) {
+        Debug.Log("Playing audio clip for " + filename);
+        audioSource.PlayOneShot(GetAudioClipByName(filename));
     }
 
     private AudioClip GetAudioClipByName(string name) {
