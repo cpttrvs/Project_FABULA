@@ -91,6 +91,7 @@ public class Player : MonoBehaviour {
         Debug.Log("Throwing blade");
         GameObject blade = GameObject.Instantiate(weapon, transform.position + new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
         blade.GetComponent<Blade>().enemy = trans.gameObject;
+		Camera.main.SendMessage("ThrowKnife");
         animator.SetTrigger("attack");
     }
 }

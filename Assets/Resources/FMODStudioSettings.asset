@@ -13,8 +13,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: C:\Users\Vico\Documents\FMOD Studio\Projet\Projet.fspro
-  SourceProjectPathUnformatted: C:\Users\Vico\Documents\FMOD Studio\Projet\Projet.fspro
+  sourceProjectPath: 
+  SourceProjectPathUnformatted: 
   SourceBankPathUnformatted: C:\Users\Vico\Documents\FMOD Studio\Projet\Build
   AutomaticEventLoading: 1
   AutomaticSampleLoading: 0
