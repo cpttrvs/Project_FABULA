@@ -8,8 +8,7 @@ public class Player : MonoBehaviour {
     
 	[SerializeField] int maxLife = 3;
 	[SerializeField] GameObject weapon;
-    // TEST
-    [SerializeField] GameObject enemy;
+	[SerializeField] GameObject bladePrefab;
 	int currentLife;
 	float speed = 6f;
 	Animator animator;
@@ -22,14 +21,6 @@ public class Player : MonoBehaviour {
 		currentLife = maxLife;
 		dead = false;
 		animator = GetComponent<Animator>();
-
-        // TEST
-        if(enemy != null) {
-            GameObject blade = GameObject.Instantiate(weapon, new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
-            blade.GetComponent<Blade>().enemy = enemy;
-        }
-
-
     }
 	
 	// Update is called once per frame
@@ -45,7 +36,6 @@ public class Player : MonoBehaviour {
 	}
 
 	public void Move(Vector3 direction) {
-		//new Vector3(direction.x, transform.position.y, direction.z)
 		transform.LookAt(transform.position + Vector3.Normalize(direction));
 		transform.Translate(0, 0, Time.deltaTime * speed);
         // Camera follows player
@@ -55,8 +45,6 @@ public class Player : MonoBehaviour {
 
 	// getters and setters
 	public float GetSpeed() { return speed; }
-	//public void SetSpeed(float value) { speed = value; }
-	//public void AddSpeed(float value) { speed += value; }
 
 	public int GetCurrentLife() { return currentLife; }
 
@@ -88,10 +76,18 @@ public class Player : MonoBehaviour {
 		// We freeze y since we never want to rotate upwards
 		direction.y = 0;
 		transform.rotation = Quaternion.LookRotation(direction);
-        Debug.Log("Throwing blade");
-        GameObject blade = GameObject.Instantiate(weapon, transform.position + new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
+        GameObject blade = GameObject.Instantiate(bladePrefab, transform.position + new Vector3(-0.6f, 1.3f, 0.22f), Quaternion.identity);
         blade.GetComponent<Blade>().enemy = trans.gameObject;
+		// Play the knife throw sound
 		Camera.main.SendMessage("ThrowKnife");
+		// Actually throw the knife
         animator.SetTrigger("attack");
+		// We supposedly threw the knife so it shouldn't be in our hands :D
+		weapon.SetActive(false);
     }
+
+	// After the enemy got hit by the knife we get it back *MAGIC*
+	public void GetKnifeBack(){
+		weapon.SetActive(true);
+	}
 }

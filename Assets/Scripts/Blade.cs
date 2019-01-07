@@ -17,7 +17,7 @@ public class Blade : MonoBehaviour {
         else if (enemy.GetComponentInChildren<MeshRenderer>() != null)
             enemyRenderer = enemy.GetComponentInChildren<MeshRenderer>();
         else
-            Debug.Log("Fuck: " + enemy.name);
+            Debug.Log("Mesh error: " + enemy.name);
     }
 
     // Update is called once per frame
@@ -29,7 +29,10 @@ public class Blade : MonoBehaviour {
 
     private void OnTriggerEnter(Collider collider) {
         if (collider.gameObject.Equals(enemy)) {
+            // We notify the enemy so he lose 1 hp
             enemy.GetComponentInChildren<Enemy>().SendMessage("Hit");
+            // We notify the player that he got his knife back
+            FindObjectOfType<Player>().SendMessage("GetKnifeBack");
             Destroy(gameObject);
         }
     }

@@ -135,9 +135,9 @@ public class GameManager : MonoBehaviour {
 		statsNbCorrectWords.text = Glossary.STRING_NBCORRECTWORDS + nbCorrectWords;
 		statsNbErrors.text = Glossary.STRING_NBERRORS + nbErrors;
         
-        //if(!gameover) 
-			timer += Time.deltaTime;
-        timerUI.text = timer.ToString("0.0");
+		timer += Time.deltaTime;
+        
+		timerUI.text = timer.ToString("0.0");
         wpm = nbCorrectWords / (timer / 60f);
 	}
 
@@ -273,6 +273,7 @@ public class GameManager : MonoBehaviour {
 
 	private void PlayerDied(){
 		gameover = true;
+		Time.timeScale = 0f;
 		foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")){
 			enemy.GetComponentInChildren<Enemy>().SendMessage("GameOver");
 		}
