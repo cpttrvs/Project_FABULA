@@ -7575,6 +7575,16 @@ Prefab:
       propertyPath: popErrorSound
       value: 
       objectReference: {fileID: 8300000, guid: 89e93921701b7f940a53712025fea43b, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: foxHowl
+      value: 
+      objectReference: {fileID: 8300000, guid: b21266c8da1b5b24aad67d4240efd064, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: foxCry
+      value: 
+      objectReference: {fileID: 8300000, guid: 006e88077d54cd342b0e40ef57f8ee0b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0

@@ -237,15 +237,21 @@ public class Enemy : MonoBehaviour {
 	}
 	
 	public void Hit() { 
+        // Death
 		if(currentLife - 1 <= 0) {
 			currentLife = 0;
+            if (type.Equals(Enemy.Type.FOX))
+                Camera.main.SendMessage("FoxHowl");
             // If the script isn't attached to the highest element of the gameobject
             if (gameObject.transform.parent != null)
                 Destroy(gameObject.transform.parent.gameObject);
             else
 			    Destroy(gameObject); 
-		} else {
+		}
+        else {
 			currentLife -= 1;
+            if(type.Equals(Enemy.Type.FOX))
+                Camera.main.SendMessage("FoxCry");
 		}
 	}
 
