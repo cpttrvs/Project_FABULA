@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -114,20 +115,22 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update () {
-		if(Input.GetKeyDown(KeyCode.Delete)){
-			InstantiateEnemy(Enemy.Type.GORILLA);
-		}
-		else if(Input.GetKeyDown(KeyCode.F2)){
-			InstantiateEnemy(Enemy.Type.DRONE);
-		}
-		// Spawns one of each
-		else if(Input.GetKeyDown(KeyCode.F3)){
-			// No idea how to foreach on Enum...
-			InstantiateEnemy(Enemy.Type.FOX);
-			InstantiateEnemy(Enemy.Type.WOLF);
-			InstantiateEnemy(Enemy.Type.DRAGON);
-			InstantiateEnemy(Enemy.Type.DRONE);
-			InstantiateEnemy(Enemy.Type.GORILLA);
+		if(SceneManager.GetActiveScene().name.Equals("TestScene")){
+			if(Input.GetKeyDown(KeyCode.Delete)){
+				InstantiateEnemy(Enemy.Type.GORILLA);
+			}
+			else if(Input.GetKeyDown(KeyCode.F2)){
+				InstantiateEnemy(Enemy.Type.DRONE);
+			}
+			// Spawns one of each
+			else if(Input.GetKeyDown(KeyCode.F3)){
+				// No idea how to foreach on Enum...
+				InstantiateEnemy(Enemy.Type.FOX);
+				InstantiateEnemy(Enemy.Type.WOLF);
+				InstantiateEnemy(Enemy.Type.DRAGON);
+				InstantiateEnemy(Enemy.Type.DRONE);
+				InstantiateEnemy(Enemy.Type.GORILLA);
+			}
 		}
 
 		playerTextUI.text = controller.GetCurrentText();

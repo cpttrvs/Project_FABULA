@@ -13,6 +13,8 @@ public class Controller : MonoBehaviour {
 	private string currentText = "";
 	private bool textMode = false;
 	private bool dead = false;
+    // True if the last input wasn't a typo, false otherwise
+    private bool lastInput = true;
 	
 	// UI
 	private Text keyboardLockUI;
@@ -63,11 +65,9 @@ public class Controller : MonoBehaviour {
 						else{
 							// add char to string
 							currentText += char.ToUpper(c);
-
-                            //check only when a character is added
-                            //CheckWords();
                         }
-						CheckWords();
+                        if(gameManagerScript.GetEnemies().Count > 0)
+						    CheckWords();
 					} 	
 				}
 			}
@@ -85,31 +85,40 @@ public class Controller : MonoBehaviour {
 
 	// Checks if the current word corresponds to one of the enemies' words
 	private void CheckWords(){
-		/*
-			TODO: 	Change this 'cause for now it takes into account that multiple enemies
-					can have the same word, which shouldn't be the case in the future...
-		 */
 		Utility.Word word = null;
 		// Just for initialisation
 		Enemy.Type type = Enemy.Type.SPIDER;
-
-        //change it back to GetVisibleEnemies when fixed
-        bool atleastOneHit = false;
+        
+        Enemy.correctInput = false;
+        bool fullMatch = false;
 		foreach(GameObject e in gameManagerScript.GetEnemies()) {
 			if((word = e.GetComponentInChildren<Enemy>().VerifyWord(GetCurrentText())) != null){
 				type = e.GetComponentInChildren<Enemy>().GetCreatureType();
 			}
             if (word != null)
             {
-                Debug.Log("Word: " + word.name);
                 correctWords.Add(word);
+                fullMatch = true;
                 gameManagerScript.nbCorrectWords++; // stats
-                atleastOneHit = true;
             }
         }
-		
-        if(atleastOneHit)
+
+        // We made a typo if none of the enemies words start with our input
+        if (!Enemy.correctInput && !fullMatch && Input.inputString[0] != '\b') {
+            Camera.main.SendMessage("Typo");
+            // We count it as an error only if the last input wasn't one
+            if(lastInput)
+                GameManager.instance.nbErrors++;
+        }
+        
+        // At least one hit
+        if (fullMatch) {
             SetCurrentText("");
+            lastInput = true;
+        }
+        else {
+            lastInput = Enemy.correctInput;
+        }
     }
 
 	public void PlayerDied(){

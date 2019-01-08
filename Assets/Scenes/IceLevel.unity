@@ -7590,6 +7590,11 @@ Prefab:
       propertyPath: knifeThrow
       value: 
       objectReference: {fileID: 8300000, guid: fabc89c2a4ff9064089847990acc6929, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: popErrorSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 89e93921701b7f940a53712025fea43b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0

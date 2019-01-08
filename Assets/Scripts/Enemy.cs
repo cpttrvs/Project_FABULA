@@ -10,15 +10,14 @@ public class Enemy : MonoBehaviour {
 	public enum Type { SPIDER, WOLF, FOX, DRAGON, DRONE, GORILLA };
 	public enum Mode { RANGE, MELEE };
 
+    public static bool correctInput;
+
 	// Only used by enemies attacking from afar
 	[SerializeField] GameObject projectilePrefab;
 
 	// Words
 	[SerializeField] Stack<Utility.Word> words = new Stack<Utility.Word>();
 	Utility.Word currentWord;
-    // to check if the currentWord has changed between this frame and the last checkWords (used for error stat)
-    public bool hasChanged = false;
-    string lastFrameWord = "";
 
 	// Behaviour
 	GameObject target;
@@ -199,7 +198,6 @@ public class Enemy : MonoBehaviour {
 		List<Utility.Word> vocabulary = new List<Utility.Word>(Utility.GetVocabulary(type, Glossary.language));
 		// Move this elsewhere, specific for each enemy...
 		int amount = 3;
-		Debug.Log(vocabulary.Count);
 		for(int i=0; i<amount; i++){
 			// Select a random index
 			int index = Random.Range(0, vocabulary.Count);
@@ -248,10 +246,7 @@ public class Enemy : MonoBehaviour {
 			    Destroy(gameObject); 
 		} else {
 			currentLife -= 1;
-			//words.Pop(); 
-			//UpdateCurrentWord();
 		}
-		Debug.Log(gameObject.name + " " + getCurrentLife());
 	}
 
 	private void OnBecameVisible() {
@@ -282,12 +277,11 @@ public class Enemy : MonoBehaviour {
 	public Utility.Word VerifyWord(string input) {
 		input = input.ToUpper();
         currentWordUI.text = Utility.GetWordColoring(currentWord.name.ToUpper(), input);
+
+        // If the user's input matches exactly the enemy's word
         if (currentWord.name.ToUpper() == input) {
-			Debug.Log(gameObject.name + ": " + input);
 			target.SendMessage("Hit", realTransform);
 			Utility.Word tmp = currentWord;
-			//Camera.main.SendMessage("PlayWordAudioClip", currentWord.name+"_"+currentWord.language.ToString().ToLower());
-			//Hit();
             // Update the word straight away
             if(getCurrentLife() > 1) {        
                 words.Pop(); 
@@ -296,23 +290,10 @@ public class Enemy : MonoBehaviour {
             return tmp;
 		}
 
-
-        int length = input.Length;
-        if (length > currentWord.name.Length)
-            length = currentWord.name.Length;
-        string temp = input.Substring(0, length);
-        hasChanged = currentWord.name.ToUpper().StartsWith(temp);
-
-        // if the word contains the input
-        if (!hasChanged){
-            temp = temp.Substring(0, length - 1);
-            bool startsWith = currentWord.name.ToUpper().StartsWith(temp);
-            if(startsWith && length - 1 > 0)
-            {
-                hasChanged = false;
-                Debug.Log(gameObject.name + ": " + currentWord.name + " has not changed");
-                GameManager.instance.nbErrors++;
-            }
+        // The player's input matches at least the beginning of this word
+        if (currentWord.name.ToUpper().StartsWith(input)) {
+            // Thus it isn't accounted as an error or typo
+            Enemy.correctInput = true;
         }
         
         return null;

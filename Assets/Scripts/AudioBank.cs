@@ -5,6 +5,7 @@ using UnityEngine;
 public class AudioBank : MonoBehaviour {
 
     [SerializeField] AudioClip knifeThrow;
+    [SerializeField] AudioClip popErrorSound;
     [SerializeField] List<AudioClip> wordAudioClips;
     private AudioSource audioSource;
 
@@ -17,6 +18,10 @@ public class AudioBank : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    private void Typo() {
+        audioSource.PlayOneShot(popErrorSound);
+    }
 
     private void ThrowKnife(){
         audioSource.PlayOneShot(knifeThrow);
