@@ -8,6 +8,8 @@ public class AudioBank : MonoBehaviour {
     [SerializeField] AudioClip popErrorSound;
     [SerializeField] AudioClip foxCry;
     [SerializeField] AudioClip foxHowl;
+    [SerializeField] AudioClip wolfCry;
+    [SerializeField] AudioClip wolfHowl;
     [SerializeField] List<AudioClip> wordAudioClips;
     private AudioSource audioSource;
 
@@ -27,6 +29,14 @@ public class AudioBank : MonoBehaviour {
 
     private void FoxHowl() {
         audioSource.PlayOneShot(foxHowl);
+    }
+
+    private void WolfCry() {
+        audioSource.PlayOneShot(wolfCry);
+    }
+
+    private void WolfHowl() {
+        audioSource.PlayOneShot(wolfHowl);
     }
 
     private void Typo() {

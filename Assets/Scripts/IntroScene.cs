@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class IntroScene : MonoBehaviour {
 
+    [SerializeField] Canvas canvas;
 	[SerializeField] Text titleUI;
 	[SerializeField] Text startUI;
 	[SerializeField] GameObject dragon;
@@ -26,7 +27,8 @@ public class IntroScene : MonoBehaviour {
 		startUI.gameObject.SetActive(false);
 		fadeColor = fadeQuad.GetComponent<MeshRenderer>().material.color;
 		audioSource = Camera.main.GetComponent<AudioSource>();
-		StartCoroutine(AnimateUI());
+        StartCoroutine(FadeIn());
+        StartCoroutine(AnimateUI());
 	}
 	
 	// Update is called once per frame
@@ -62,11 +64,29 @@ public class IntroScene : MonoBehaviour {
 			dragon.transform.Translate(0, 0, Time.deltaTime * 5f);
 	}
 
-	IEnumerator AnimateUI()
+    IEnumerator FadeIn() {
+        Color fadeColor = fadeQuad.GetComponent<MeshRenderer>().material.color;
+        CanvasGroup canvasGroup = canvas.GetComponent<CanvasGroup>();
+        // This time we start from black and go transparent
+        fadeColor.a = 1;
+        canvasGroup.alpha = 0;
+        fadeQuad.GetComponent<MeshRenderer>().material.color = fadeColor;
+        while (fadeColor.a > 0) {
+            fadeColor.a -= Time.deltaTime;
+            canvasGroup.alpha += Time.deltaTime;
+            fadeQuad.GetComponent<MeshRenderer>().material.color = fadeColor;
+            yield return null;
+        }
+        yield return null;
+    }
+
+    IEnumerator AnimateUI()
     {
-		yield return new WaitForSeconds(2f);
-		// Colors the title's letters just like during the gameplay
-		for(int i=1; i<targetText.Length+1; i++){
+        yield return new WaitForSeconds(0.75f);
+        dragon.GetComponent<AudioSource>().Play();
+        yield return new WaitForSeconds(1.25f);
+        // Colors the title's letters just like during the gameplay
+        for (int i=1; i<targetText.Length+1; i++){
 			yield return new WaitForSeconds(0.4f);
 			// If we aren't changing scenes
 			if(!zoomIn){
@@ -78,6 +98,7 @@ public class IntroScene : MonoBehaviour {
 		}
 		// We freeze the dragon
 		freeze = true;
+        dragon.GetComponent<Animator>().enabled = false;
 		yield return new WaitForSeconds(1f);
 		// Blinking PRESS ENTER text
 		while(!zoomIn){

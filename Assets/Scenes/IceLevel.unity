@@ -7585,6 +7585,16 @@ Prefab:
       propertyPath: foxCry
       value: 
       objectReference: {fileID: 8300000, guid: 006e88077d54cd342b0e40ef57f8ee0b, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: wolfCry
+      value: 
+      objectReference: {fileID: 8300000, guid: d733e86d443e52840a2caaeb55df4f7c, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: wolfHowl
+      value: 
+      objectReference: {fileID: 8300000, guid: 1277c1a6983ca1d499b4d0c049f98a66, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0
