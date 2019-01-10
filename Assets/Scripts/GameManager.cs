@@ -115,8 +115,9 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update () {
+        // TESTING
 		if(SceneManager.GetActiveScene().name.Equals("TestScene")){
-			if(Input.GetKeyDown(KeyCode.Delete)){
+			if(Input.GetKeyDown(KeyCode.F1)){
 				InstantiateEnemy(Enemy.Type.GORILLA);
 			}
 			else if(Input.GetKeyDown(KeyCode.F2)){

@@ -261,6 +261,15 @@ public class Enemy : MonoBehaviour {
             case Enemy.Type.WOLF:
                 Camera.main.SendMessage("WolfCry");
                 break;
+            case Enemy.Type.DRAGON:
+                Camera.main.SendMessage("DragonHit");
+                break;
+            case Enemy.Type.GORILLA:
+                Camera.main.SendMessage("GorillaBark");
+                break;
+            case Enemy.Type.DRONE:
+                Camera.main.SendMessage("DroneHit");
+                break;
         }
     }
 
@@ -272,6 +281,15 @@ public class Enemy : MonoBehaviour {
             case Enemy.Type.WOLF:
                 Camera.main.SendMessage("WolfHowl");
             break;
+            case Enemy.Type.DRAGON:
+                Camera.main.SendMessage("DragonDeath");
+                break;
+            case Enemy.Type.GORILLA:
+                Camera.main.SendMessage("GorillaGroan");
+                break;
+            case Enemy.Type.DRONE:
+                Camera.main.SendMessage("DroneDestroyed");
+                break;
         }
     }
 

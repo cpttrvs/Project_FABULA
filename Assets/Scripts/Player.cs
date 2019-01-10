@@ -66,7 +66,8 @@ public class Player : MonoBehaviour {
 			}
 		} 
 		else {
-			currentLife -= value; 
+			currentLife -= value;
+            Camera.main.SendMessage("CharacterHurt");
 		}
 	}
 

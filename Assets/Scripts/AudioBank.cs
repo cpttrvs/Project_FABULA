@@ -10,6 +10,13 @@ public class AudioBank : MonoBehaviour {
     [SerializeField] AudioClip foxHowl;
     [SerializeField] AudioClip wolfCry;
     [SerializeField] AudioClip wolfHowl;
+    [SerializeField] AudioClip dragonHit;
+    [SerializeField] AudioClip dragonDeath;
+    [SerializeField] AudioClip gorillaBark;
+    [SerializeField] AudioClip gorillaGroan;
+    [SerializeField] AudioClip droneHit;
+    [SerializeField] AudioClip droneDestroyed;
+    [SerializeField] AudioClip characterHurt;
     [SerializeField] List<AudioClip> wordAudioClips;
     private AudioSource audioSource;
 
@@ -37,6 +44,34 @@ public class AudioBank : MonoBehaviour {
 
     private void WolfHowl() {
         audioSource.PlayOneShot(wolfHowl);
+    }
+
+    private void DragonHit() {
+        audioSource.PlayOneShot(dragonHit);
+    }
+
+    private void DragonDeath() {
+        audioSource.PlayOneShot(dragonDeath);
+    }
+
+    private void GorillaBark() {
+        audioSource.PlayOneShot(gorillaBark);
+    }
+
+    private void GorillaGroan() {
+        audioSource.PlayOneShot(gorillaGroan);
+    }
+
+    private void DroneHit() {
+        audioSource.PlayOneShot(droneHit);
+    }
+
+    private void DroneDestroyed() {
+        audioSource.PlayOneShot(droneDestroyed);
+    }
+
+    private void CharacterHurt() {
+        audioSource.PlayOneShot(characterHurt);
     }
 
     private void Typo() {

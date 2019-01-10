@@ -7595,6 +7595,41 @@ Prefab:
       propertyPath: wolfHowl
       value: 
       objectReference: {fileID: 8300000, guid: 1277c1a6983ca1d499b4d0c049f98a66, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: dragonDeath
+      value: 
+      objectReference: {fileID: 8300000, guid: 7f8c4c2bf7097234ba02f55a5f968c68, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: dragonHit
+      value: 
+      objectReference: {fileID: 8300000, guid: a25c740ff6f25bb4b9d5b78a80b38d60, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: gorillaGroan
+      value: 
+      objectReference: {fileID: 8300000, guid: 70040c52f61e6b3448dd7bc93f75640b, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: gorillaBark
+      value: 
+      objectReference: {fileID: 8300000, guid: 91f3ff2f8ec298248ae18a3eeb03104b, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: droneHit
+      value: 
+      objectReference: {fileID: 8300000, guid: 9af929a6310ce294fa7cae46a4ed36e9, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: droneDestroyed
+      value: 
+      objectReference: {fileID: 8300000, guid: 2abef5e6a51769e4bb8cbdbddefd7c4c, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterHurt
+      value: 
+      objectReference: {fileID: 8300000, guid: c6c8ac2cae669174ea6d0bae012ce8d1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0
