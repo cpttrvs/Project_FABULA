@@ -16,7 +16,11 @@ public class AudioBank : MonoBehaviour {
     [SerializeField] AudioClip gorillaGroan;
     [SerializeField] AudioClip droneHit;
     [SerializeField] AudioClip droneDestroyed;
-    [SerializeField] AudioClip characterHurt;
+    [SerializeField] AudioClip characterHurt_1;
+    [SerializeField] AudioClip characterHurt_2;
+    [SerializeField] AudioClip characterHurt_3;
+    [SerializeField] AudioClip characterHurt_4;
+    [SerializeField] AudioClip characterDying;
     [SerializeField] List<AudioClip> wordAudioClips;
     private AudioSource audioSource;
 
@@ -70,8 +74,24 @@ public class AudioBank : MonoBehaviour {
         audioSource.PlayOneShot(droneDestroyed);
     }
 
-    private void CharacterHurt() {
-        audioSource.PlayOneShot(characterHurt);
+    private void CharacterHurt(int hp) {
+        switch (hp) {
+            case 4:
+                audioSource.PlayOneShot(characterHurt_1);
+                break;
+            case 3:
+                audioSource.PlayOneShot(characterHurt_2);
+                break;
+            case 2:
+                audioSource.PlayOneShot(characterHurt_3);
+                break;
+            case 1:
+                audioSource.PlayOneShot(characterHurt_4);
+                break;
+            case 0:
+                audioSource.PlayOneShot(characterDying);
+                break;
+        }
     }
 
     private void Typo() {

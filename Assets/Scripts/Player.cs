@@ -67,9 +67,9 @@ public class Player : MonoBehaviour {
 		} 
 		else {
 			currentLife -= value;
-            Camera.main.SendMessage("CharacterHurt");
-		}
-	}
+        }
+        Camera.main.SendMessage("CharacterHurt", currentLife);
+    }
 
 	// Called when an enemy got hit
 	public void Hit(Transform trans){

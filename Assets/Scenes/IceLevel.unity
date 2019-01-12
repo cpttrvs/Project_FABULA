@@ -7630,6 +7630,31 @@ Prefab:
       propertyPath: characterHurt
       value: 
       objectReference: {fileID: 8300000, guid: c6c8ac2cae669174ea6d0bae012ce8d1, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterHurt_2
+      value: 
+      objectReference: {fileID: 8300000, guid: 3bd5624b18128c54d80c583ee9aa4d81, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterHurt_1
+      value: 
+      objectReference: {fileID: 8300000, guid: 7c1f0f154e607ab4b8e06ac8934f044b, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterDying
+      value: 
+      objectReference: {fileID: 8300000, guid: c1599b1e86ca6c64a94e518fd77125f7, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterHurt_3
+      value: 
+      objectReference: {fileID: 8300000, guid: f42ac32433682d64ab6e69a983c7fedb, type: 3}
+    - target: {fileID: 114670746092763954, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: characterHurt_4
+      value: 
+      objectReference: {fileID: 8300000, guid: 3b3b139fe334be84f82b1bf8e67af88b, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0
