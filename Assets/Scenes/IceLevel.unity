@@ -7655,6 +7655,12 @@ Prefab:
       propertyPath: characterHurt_4
       value: 
       objectReference: {fileID: 8300000, guid: 3b3b139fe334be84f82b1bf8e67af88b, type: 3}
+    - target: {fileID: 114484128652379470, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 07c68af0d9fe4a54fb5dff55d67bbac9,
+        type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3925bd03e066c434a92e66e38fc49bdb, type: 2}
   m_IsPrefabAsset: 0

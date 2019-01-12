@@ -36,18 +36,8 @@ public class IntroScene : MonoBehaviour {
 		// Non Keypad ENTER pressed
 		if(Input.GetKeyDown(KeyCode.Return)){
 			zoomIn = true;
-			//titleUI.gameObject.SetActive(false);
-			//startUI.gameObject.SetActive(false);
 		}
 		if(zoomIn){
-			/*
-			// The camera rotates towards the player's head
-			Quaternion rotation = Quaternion.LookRotation(player.transform.position+new Vector3(0, 2.5f, 0) - transform.position);
-			transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 2.5f * Time.deltaTime);
-			// The camera zooms in
-			if(Camera.main.fieldOfView > 1)
-				Camera.main.fieldOfView--;
-			*/
 			// The screen turns black
 			if(fadeColor.a < 1){
 				fadeColor.a += Time.deltaTime;
