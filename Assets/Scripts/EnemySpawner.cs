@@ -9,8 +9,10 @@ public class EnemySpawner : MonoBehaviour {
     [SerializeField] bool finalStand;
     [SerializeField] Enemy.Type type;
 
-    // We only spawn a dragon the first time the player triggers it
-    private bool spawnedDragon = false;
+	[SerializeField] GameObject musicController;
+
+	// We only spawn a dragon the first time the player triggers it
+	private bool spawnedDragon = false;
     private bool spawnedFinalFight = false;
 
     private void OnTriggerEnter(Collider collider) {
@@ -26,8 +28,10 @@ public class EnemySpawner : MonoBehaviour {
                 gameManager.InstantiateEnemy(Enemy.Type.DRAGON, new Vector3(x + (float)rand.NextDouble() * 15f - 7.5f, y, z + (float)rand.NextDouble() * 15f - 7.5f));
                 gameManager.InstantiateEnemy(Enemy.Type.DRONE, new Vector3(x + (float)rand.NextDouble() * 15f - 7.5f, y, z + (float)rand.NextDouble() * 15f - 7.5f));
                 gameManager.InstantiateEnemy(Enemy.Type.GORILLA, new Vector3(x + (float)rand.NextDouble() * 15f - 7.5f, y, z + (float)rand.NextDouble() * 15f - 7.5f));
-                spawnedFinalFight = true;             
-            }
+                spawnedFinalFight = true;
+
+				musicController.GetComponent<ManageMusic>().fightMusic();
+			}
             else if(!finalStand){
                 // Fox and wolf spawns can be triggered multiple times, dragon spawns can't
                 if (!type.Equals(Enemy.Type.DRAGON) || (type.Equals(Enemy.Type.DRAGON) && !spawnedDragon))

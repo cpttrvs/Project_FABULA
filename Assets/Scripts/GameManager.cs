@@ -49,6 +49,9 @@ public class GameManager : MonoBehaviour {
     [SerializeField] float timeScaleWriting = 0.75f;
     private float currentTimeScale;
 
+	//Music
+	public GameObject musicController;
+
 	void Start () {
 		StartCoroutine(FadeIn());
 		Time.timeScale = 1f;
@@ -143,6 +146,9 @@ public class GameManager : MonoBehaviour {
         
 		timerUI.text = timer.ToString("0.0");
         wpm = nbCorrectWords / (timer / 60f);
+
+		if (enemies.Count == 0)
+			musicController.GetComponent<ManageMusic>().ambienceMusic();
 	}
 
 	IEnumerator FadeIn(){
@@ -281,5 +287,7 @@ public class GameManager : MonoBehaviour {
 		foreach(GameObject enemy in GameObject.FindGameObjectsWithTag("Enemy")){
 			enemy.GetComponentInChildren<Enemy>().SendMessage("GameOver");
 		}
+
+		musicController.GetComponent<ManageMusic>().gameOverMusic();
 	}
 }
