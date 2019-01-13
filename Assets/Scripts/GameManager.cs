@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	private Camera camera;
 	[SerializeField] Canvas canvas;
 	[SerializeField] GameObject fadeQuad;
+    [SerializeField] AudioSource music;
 
 	//player
 	[SerializeField] GameObject playerGO;
@@ -118,8 +119,12 @@ public class GameManager : MonoBehaviour {
     }
 	
 	void Update () {
+        // Fade in the music
+        if (music.volume < 0.9f) {
+            music.volume = Mathf.Lerp(music.volume, 1f, Time.deltaTime);
+        }
         // TESTING
-		if(SceneManager.GetActiveScene().name.Equals("TestScene")){
+        if (SceneManager.GetActiveScene().name.Equals("TestScene")){
 			if(Input.GetKeyDown(KeyCode.F1)){
 				InstantiateEnemy(Enemy.Type.GORILLA);
 			}
@@ -162,7 +167,7 @@ public class GameManager : MonoBehaviour {
 			fadeColor.a -= Time.deltaTime;
 			canvasGroup.alpha += Time.deltaTime;
 			fadeQuad.GetComponent<MeshRenderer>().material.color = fadeColor;
-			yield return null;
+            yield return null;
 		}
 		yield return null;
 	}

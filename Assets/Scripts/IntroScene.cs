@@ -14,6 +14,7 @@ public class IntroScene : MonoBehaviour {
 	[SerializeField] GameObject fadeQuad;
 	// Keyboard sounds
 	[SerializeField] List<AudioClip> audioClips;
+    [SerializeField] AudioSource music;
 
 	string targetText;
 	bool freeze = false;
@@ -41,7 +42,9 @@ public class IntroScene : MonoBehaviour {
 			// The screen turns black
 			if(fadeColor.a < 1){
 				fadeColor.a += Time.deltaTime;
-				GetComponentInChildren<CanvasGroup>().alpha -= Time.deltaTime;
+                // Also fade out the music
+                music.volume = Mathf.Lerp(music.volume, 0f, Time.deltaTime * 2f);
+                GetComponentInChildren<CanvasGroup>().alpha -= Time.deltaTime;
 				fadeQuad.GetComponent<MeshRenderer>().material.color = fadeColor;
 			}
 			// We switch scenes
