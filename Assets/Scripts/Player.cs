@@ -55,13 +55,6 @@ public class Player : MonoBehaviour {
 				animator.SetTrigger("dead");
 				dead = true;
 				SendMessage("PlayerDied");
-                try
-                {
-                    transform.Find("FModStudio Emitter").gameObject.SetActive(true);
-                } catch (System.NullReferenceException e)
-                {
-                    Debug.Log("Player : FModStudio Emitter : Null reference exception");
-                }
 				GameManager.instance.SendMessage("PlayerDied");
 			}
 		} 

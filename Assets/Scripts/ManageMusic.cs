@@ -27,7 +27,6 @@ public class ManageMusic : MonoBehaviour
 	{
 		if (!is_boss_already_trigger)
 		{
-            Debug.Log("Playing fight music");
             audio_source.clip = boss_music;
             audio_source.time = 7.5f;
             audio_source.Play();
@@ -39,7 +38,6 @@ public class ManageMusic : MonoBehaviour
 	{
 		if (is_boss_already_trigger && !is_boss_dead)
 		{
-            Debug.Log("Playing ambience music");
             audio_source.clip = background_music;
             audio_source.Play();
 			is_boss_dead = true;
@@ -48,7 +46,6 @@ public class ManageMusic : MonoBehaviour
 
 	public void gameOverMusic()
 	{
-        Debug.Log("Playing gameover music");
         audio_source.time = 7.5f;
         audio_source.clip = gameover_music;
         audio_source.Play();
