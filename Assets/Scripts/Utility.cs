@@ -4,19 +4,20 @@ using UnityEngine;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
+using UnityEditor;
 
 public class Utility {
 
-	static private string filePath = "Assets/enemies.json";
+	static private string fileName = "enemies.json";
 	static private List<Vocabulary> vocabularies;
 
 	public static void InitializeVocabularyList(){
-		StreamReader reader = new StreamReader(filePath);
-		string json = reader.ReadToEnd();
-		vocabularies = JsonConvert.DeserializeObject<List<Vocabulary>>(json);
+        // Loads the enemies file from the Resource folder, works for .exe as well
+        TextAsset json = Resources.Load<TextAsset>(fileName.Replace(".json", ""));
+		vocabularies = JsonConvert.DeserializeObject<List<Vocabulary>>(json.text);
 	}
 
-	public static List<Word> GetVocabulary(Enemy.Type enemyType, Glossary.Language language){
+    public static List<Word> GetVocabulary(Enemy.Type enemyType, Glossary.Language language){
 		foreach(Vocabulary vocabulary in vocabularies){
 			if(vocabulary.type.Equals(enemyType)){
 				if(language.Equals(Glossary.Language.FR)){
@@ -27,7 +28,6 @@ public class Utility {
 				}
 			}
 		}
-		// Throw exception?
 		return null;
 	}
 	

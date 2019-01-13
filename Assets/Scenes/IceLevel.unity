@@ -6678,7 +6678,7 @@ PrefabInstance:
     - target: {fileID: 114680112629497074, guid: 84b84b6737a5148f2b4c1ec6354f8ff2,
         type: 3}
       propertyPath: timeScaleWriting
-      value: 0.75
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114680112629497074, guid: 84b84b6737a5148f2b4c1ec6354f8ff2,
         type: 3}
