@@ -34,6 +34,11 @@ public class AudioBank : MonoBehaviour {
 		
 	}
 
+    private void EnemySound(string sound) {
+        audioSource.volume = 0.6f;
+        SendMessage(sound);
+    }
+
     private void FoxCry() {
         audioSource.PlayOneShot(foxCry);
     }
@@ -103,7 +108,7 @@ public class AudioBank : MonoBehaviour {
     }
 
     private void PlayWordAudioClip(string filename) {
-        Debug.Log("Playing audio clip for " + filename);
+        audioSource.volume = 1f;
         audioSource.PlayOneShot(GetAudioClipByName(filename));
     }
 

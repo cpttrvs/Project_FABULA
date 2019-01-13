@@ -8221,6 +8221,11 @@ PrefabInstance:
       propertyPath: enterText
       value: 
       objectReference: {fileID: 1714394653}
+    - target: {fileID: 114402086782820670, guid: 3925bd03e066c434a92e66e38fc49bdb,
+        type: 3}
+      propertyPath: music
+      value: 
+      objectReference: {fileID: 257324908}
     - target: {fileID: 224447372741017286, guid: 3925bd03e066c434a92e66e38fc49bdb,
         type: 3}
       propertyPath: m_LocalPosition.z

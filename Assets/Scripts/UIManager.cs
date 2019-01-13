@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour {
     [SerializeField] GameObject movementText;
     [SerializeField] GameObject enterText;
 
-	// Contains the scrollBar and the scrollableList
-	private GameObject layoutPanel;
+    [SerializeField] AudioSource music;
+
+    // Contains the scrollBar and the scrollableList
+    private GameObject layoutPanel;
 	private GameObject scrollBar;
 	private GameObject scrollableList;
 	private GameObject modelPanel;
@@ -37,10 +39,12 @@ public class UIManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if(Input.GetKeyDown(KeyCode.Escape)){
-			if(GamePaused)
-				Resume();
-			else
-				Pause();
+            if (GamePaused) {
+                Resume();
+            }
+            else {
+                Pause();
+            }
 		}
 
         if(GameManager.instance.gameover)
@@ -93,8 +97,9 @@ public class UIManager : MonoBehaviour {
         enterText.GetComponent<TextMesh>().text = Glossary.STRING_ENTER;
 	}
 
-	public void Resume(){
-		GamePaused = false;
+	public void Resume() {
+        music.volume = 0.8f;
+        GamePaused = false;
 		pauseMenuUI.SetActive(false);
         finishUI.SetActive(false);
 		wordDisplayUI.SetActive(false);
@@ -103,8 +108,9 @@ public class UIManager : MonoBehaviour {
 		Time.timeScale = 1f;	
 	}
 
-	public void Pause(){
-		wordDisplayUI.SetActive(false);
+	public void Pause() {
+        music.volume = 0.4f;
+        wordDisplayUI.SetActive(false);
 		gameUI.SetActive(true);
 		pauseMenuUI.SetActive(true);
 		// Only if we came from the game and not from other menus
@@ -136,12 +142,12 @@ public class UIManager : MonoBehaviour {
     }
 
     public void QuitGame(){
-		Debug.Log("Quitting game...");
 		Application.Quit();
 	}
 
-	public void ShowVocabulary(){
-		pauseMenuUI.SetActive(false);
+	public void ShowVocabulary() {
+        music.volume = 0.2f;
+        pauseMenuUI.SetActive(false);
 		gameUI.SetActive(false);
         finishUI.SetActive(false);
 		wordDisplayUI.SetActive(true);

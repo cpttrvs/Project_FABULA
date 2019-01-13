@@ -256,19 +256,19 @@ public class Enemy : MonoBehaviour {
     private void HurtSound() {
         switch (type) {
             case Enemy.Type.FOX:
-                Camera.main.SendMessage("FoxCry");
+                Camera.main.SendMessage("EnemySound", "FoxCry");
                 break;
             case Enemy.Type.WOLF:
-                Camera.main.SendMessage("WolfCry");
+                Camera.main.SendMessage("EnemySound", "WolfCry");
                 break;
             case Enemy.Type.DRAGON:
-                Camera.main.SendMessage("DragonHit");
+                Camera.main.SendMessage("EnemySound", "DragonHit");
                 break;
             case Enemy.Type.GORILLA:
-                Camera.main.SendMessage("GorillaBark");
+                Camera.main.SendMessage("EnemySound", "GorillaBark");
                 break;
             case Enemy.Type.DRONE:
-                Camera.main.SendMessage("DroneHit");
+                Camera.main.SendMessage("EnemySound", "DroneHit");
                 break;
         }
     }
@@ -276,19 +276,19 @@ public class Enemy : MonoBehaviour {
     private void DeathSound() {
         switch (type) {
             case Enemy.Type.FOX:
-                Camera.main.SendMessage("FoxHowl");
+                Camera.main.SendMessage("EnemySound", "FoxHowl");
             break;
             case Enemy.Type.WOLF:
-                Camera.main.SendMessage("WolfHowl");
+                Camera.main.SendMessage("EnemySound", "WolfHowl");
             break;
             case Enemy.Type.DRAGON:
-                Camera.main.SendMessage("DragonDeath");
+                Camera.main.SendMessage("EnemySound", "DragonDeath");
                 break;
             case Enemy.Type.GORILLA:
-                Camera.main.SendMessage("GorillaGroan");
+                Camera.main.SendMessage("EnemySound", "GorillaGroan");
                 break;
             case Enemy.Type.DRONE:
-                Camera.main.SendMessage("DroneDestroyed");
+                Camera.main.SendMessage("EnemySound", "DroneDestroyed");
                 break;
         }
     }

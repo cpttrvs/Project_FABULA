@@ -120,8 +120,8 @@ public class GameManager : MonoBehaviour {
 	
 	void Update () {
         // Fade in the music
-        if (music.volume < 0.9f) {
-            music.volume = Mathf.Lerp(music.volume, 1f, Time.deltaTime);
+        if (music.volume < 0.8f) {
+            music.volume = Mathf.Lerp(music.volume, 0.85f, Time.deltaTime);
         }
         // TESTING
         if (SceneManager.GetActiveScene().name.Equals("TestScene")){
