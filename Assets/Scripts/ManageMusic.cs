@@ -5,29 +5,32 @@ using UnityEngine;
 public class ManageMusic : MonoBehaviour
 {
 
-	public AudioSource background_music;
-	public AudioSource boss_music;
-	public AudioSource gameover_music;
+	[SerializeField] AudioClip background_music;
+    [SerializeField] AudioClip boss_music;
+    [SerializeField] AudioClip gameover_music;
 
 	private bool is_boss_already_trigger = false;
 	private bool is_boss_dead = false;
 
-	private AudioSource current_music;
+	private AudioSource audio_source;
 
 	// Start is called before the first frame update
 	void Start()
 	{
-		current_music = background_music;
-		current_music.Play(0);
+        audio_source = GetComponent<AudioSource>();
+        audio_source.clip = background_music;
+        audio_source.time = 7.5f;
+		audio_source.Play();
 	}
 
 	public void fightMusic()
 	{
 		if (!is_boss_already_trigger)
 		{
-			current_music.Stop();
-			current_music = boss_music;
-			current_music.Play(0);
+            Debug.Log("Playing fight music");
+            audio_source.clip = boss_music;
+            audio_source.time = 7.5f;
+            audio_source.Play();
 			is_boss_already_trigger = true;
 		}
 	}
@@ -36,17 +39,18 @@ public class ManageMusic : MonoBehaviour
 	{
 		if (is_boss_already_trigger && !is_boss_dead)
 		{
-			current_music.Stop();
-			current_music = background_music;
-			current_music.Play(0);
+            Debug.Log("Playing ambience music");
+            audio_source.clip = background_music;
+            audio_source.Play();
 			is_boss_dead = true;
 		}
 	}
 
 	public void gameOverMusic()
 	{
-		current_music.Stop();
-		current_music = gameover_music;
-		current_music.Play();
+        Debug.Log("Playing gameover music");
+        audio_source.time = 7.5f;
+        audio_source.clip = gameover_music;
+        audio_source.Play();
 	}
 }
