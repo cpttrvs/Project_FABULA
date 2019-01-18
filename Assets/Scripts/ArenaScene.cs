@@ -39,8 +39,6 @@ public class ArenaScene : MonoBehaviour
             if (r == 3)
                 t = Enemy.Type.GORILLA;
             if (r == 4)
-                t = Enemy.Type.SPIDER;
-            if (r == 5)
                 t = Enemy.Type.WOLF;
 
             GameManager.instance.InstantiateEnemy(t, spawners[Random.Range(0, spawners.Count)].transform.position);

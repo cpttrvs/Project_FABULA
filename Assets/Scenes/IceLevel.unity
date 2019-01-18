@@ -6791,6 +6791,11 @@ PrefabInstance:
       propertyPath: enterText
       value: 
       objectReference: {fileID: 1714394653}
+    - target: {fileID: 663621338861896065, guid: 8905f2cd57fac4c4c9df867b71832fa2,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8905f2cd57fac4c4c9df867b71832fa2, type: 3}
 --- !u!1 &1205557810

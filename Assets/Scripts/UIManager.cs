@@ -33,8 +33,8 @@ public class UIManager : MonoBehaviour {
 		scrollBar = layoutPanel.transform.Find("Scrollbar").gameObject;
 		modelPanel = scrollableList.transform.Find("InfoPanel").gameObject;
 		scrollableWords = new List<Utility.Word>();
-		//UpdateUITexts();
-	}
+        UpdateUITexts();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -71,19 +71,22 @@ public class UIManager : MonoBehaviour {
 		pauseMenuUI.transform.Find("Language").GetComponentInChildren<Text>().text = Glossary.STRING_LANGUAGE;
 		pauseMenuUI.transform.Find("VocabularyButton").GetComponentInChildren<Text>().text = Glossary.STRING_VOCABULARY;
 		pauseMenuUI.transform.Find("QuitButton").GetComponentInChildren<Text>().text = Glossary.STRING_QUIT;
-
-        if(GameManager.instance.finished)
-            finishUI.transform.Find("finishMessage").GetComponent<Text>().text = Glossary.STRING_WIN;
-        else
-            finishUI.transform.Find("finishMessage").GetComponent<Text>().text = Glossary.STRING_LOOSE;
-        finishUI.transform.Find("finishWPM").GetComponent<Text>().text = Glossary.STRING_WPM + GameManager.instance.wpm;
-        finishUI.transform.Find("finishNbCorrectWords").GetComponent<Text>().text = Glossary.STRING_NBCORRECTWORDS + GameManager.instance.nbCorrectWords;
-        finishUI.transform.Find("finishNbErrors").GetComponent<Text>().text = Glossary.STRING_NBERRORS + GameManager.instance.nbErrors;
-
+        
         finishUI.transform.Find("RestartButton").GetComponentInChildren<Text>().text = Glossary.STRING_RESTART;
         finishUI.transform.Find("VocabularyButton").GetComponentInChildren<Text>().text = Glossary.STRING_VOCABULARY;
         finishUI.transform.Find("QuitButton").GetComponentInChildren<Text>().text = Glossary.STRING_QUIT;
-        
+
+        // If we are in the arena we can go to the level
+        if (SceneManager.GetActiveScene().buildIndex == SceneManager.GetSceneByName("ArenaScene").buildIndex) {
+            finishUI.transform.Find("SceneButton").GetComponentInChildren<Text>().text = Glossary.STRING_LEVEL;
+            finishUI.transform.Find("SceneButton").GetComponent<Button>().onClick.AddListener(LevelMode);
+        }
+        // If we are in the level we can go to the arena
+        else {
+            finishUI.transform.Find("SceneButton").GetComponentInChildren<Text>().text = Glossary.STRING_ARENA;
+            finishUI.transform.Find("SceneButton").GetComponent<Button>().onClick.AddListener(ArenaMode);
+        }
+
         wordDisplayUI.transform.Find("BackButton").GetComponentInChildren<Text>().text = Glossary.STRING_BACK;
 		// Needed for the ForceRebuildLayoutImmediate, doesn't seem to work on inactive objects
 		wordDisplayUI.SetActive(true);
@@ -97,7 +100,15 @@ public class UIManager : MonoBehaviour {
             movementText.GetComponent<TextMesh>().text = Glossary.STRING_MOVEMENT;
         if(enterText.gameObject != null)
             enterText.GetComponent<TextMesh>().text = Glossary.STRING_ENTER;
-	}
+
+        if (GameManager.instance.finished)
+            finishUI.transform.Find("finishMessage").GetComponent<Text>().text = Glossary.STRING_WIN;
+        else
+            finishUI.transform.Find("finishMessage").GetComponent<Text>().text = Glossary.STRING_LOOSE;
+        finishUI.transform.Find("finishWPM").GetComponent<Text>().text = Glossary.STRING_WPM + GameManager.instance.wpm;
+        finishUI.transform.Find("finishNbCorrectWords").GetComponent<Text>().text = Glossary.STRING_NBCORRECTWORDS + GameManager.instance.nbCorrectWords;
+        finishUI.transform.Find("finishNbErrors").GetComponent<Text>().text = Glossary.STRING_NBERRORS + GameManager.instance.nbErrors;
+    }
 
 	public void Resume() {
         music.volume = 0.8f;
@@ -147,9 +158,12 @@ public class UIManager : MonoBehaviour {
 		Application.Quit();
 	}
 
-    public void ArenaMode()
-    {
+    public void ArenaMode(){
         SceneManager.LoadScene("ArenaScene");
+    }
+
+    public void LevelMode() {
+        SceneManager.LoadScene("IceLevel");
     }
 
 	public void ShowVocabulary() {
@@ -164,7 +178,7 @@ public class UIManager : MonoBehaviour {
 
     public void Restart()
     {
-        SceneManager.LoadScene("IceLevel");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
 	// Hides/Shows the scrollbar depending on the size of the content

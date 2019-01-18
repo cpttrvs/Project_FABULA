@@ -201,4 +201,30 @@ public class Glossary {
             }
         }
     }
+
+    public static string STRING_ARENA {
+        get {
+            switch (language) {
+                case Language.FR:
+                return "ARÈNE";
+                case Language.EN:
+                return "ARENA";
+                default:
+                return "";
+            }
+        }
+    }
+
+    public static string STRING_LEVEL {
+        get {
+            switch (language) {
+                case Language.FR:
+                return "NIVEAU";
+                case Language.EN:
+                return "LEVEL";
+                default:
+                return "";
+            }
+        }
+    }
 }

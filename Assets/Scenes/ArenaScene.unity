@@ -4048,16 +4048,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2065169747985967591, guid: 8905f2cd57fac4c4c9df867b71832fa2,
-        type: 3}
-      propertyPath: Loop
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2025317058422981715, guid: 8905f2cd57fac4c4c9df867b71832fa2,
         type: 3}
       propertyPath: music
       value: 
       objectReference: {fileID: 1022392282}
+    - target: {fileID: 2065169747985967591, guid: 8905f2cd57fac4c4c9df867b71832fa2,
+        type: 3}
+      propertyPath: Loop
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 663621338861896065, guid: 8905f2cd57fac4c4c9df867b71832fa2,
+        type: 3}
+      propertyPath: m_Name
+      value: SceneButton
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8905f2cd57fac4c4c9df867b71832fa2, type: 3}
 --- !u!1001 &2087289277
