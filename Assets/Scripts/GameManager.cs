@@ -295,4 +295,9 @@ public class GameManager : MonoBehaviour {
 
 		musicController.GetComponent<ManageMusic>().gameOverMusic();
 	}
+
+    public void GoToArena()
+    {
+        SceneManager.LoadScene("ArenaScene");
+    }
 }

@@ -81,6 +81,12 @@ public class Controller : MonoBehaviour {
 				player.Move(move);
 			}
 		}
+
+
+        if(Input.GetKey(KeyCode.F1))
+        {
+            GameManager.instance.GoToArena();
+        }
 	}
 
 	// Checks if the current word corresponds to one of the enemies' words
