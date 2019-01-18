@@ -308,7 +308,10 @@ public class Enemy : MonoBehaviour {
 	}
 
 	private void OnDestroy() {
-		GameManager.instance.SendMessage("RemoveEnemy", gameObject);
+        if(GameManager.instance != null)
+        {
+            GameManager.instance.SendMessage("RemoveEnemy", gameObject);
+        }
 	}
 
 	// Target

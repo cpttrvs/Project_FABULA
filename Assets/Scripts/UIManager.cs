@@ -93,8 +93,10 @@ public class UIManager : MonoBehaviour {
 		}
 		wordDisplayUI.SetActive(false);
 
-        movementText.GetComponent<TextMesh>().text = Glossary.STRING_MOVEMENT;
-        enterText.GetComponent<TextMesh>().text = Glossary.STRING_ENTER;
+        if(movementText.gameObject != null)
+            movementText.GetComponent<TextMesh>().text = Glossary.STRING_MOVEMENT;
+        if(enterText.gameObject != null)
+            enterText.GetComponent<TextMesh>().text = Glossary.STRING_ENTER;
 	}
 
 	public void Resume() {
@@ -144,6 +146,11 @@ public class UIManager : MonoBehaviour {
     public void QuitGame(){
 		Application.Quit();
 	}
+
+    public void ArenaMode()
+    {
+        SceneManager.LoadScene("ArenaScene");
+    }
 
 	public void ShowVocabulary() {
         music.volume = 0.2f;
